@@ -1,0 +1,5 @@
+pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:".amazonaws.com"; endswith; msg:"Pass TLS to .amazonaws.com"; sid:2001; rev:1;)
+
+pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:".account.gov.uk"; endswith; msg:"Pass TLS to .account.gov.uk"; sid:2002; rev:1;)
+
+pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:".london.cloudapps.digital"; endswith; msg:"Pass TLS to .london.cloudapps.digital"; sid:2003; rev:1;)
