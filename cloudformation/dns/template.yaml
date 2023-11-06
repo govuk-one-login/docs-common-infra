@@ -1,0 +1,29 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: >-
+  Creates the necessary components to manage DNS for Documentation.
+
+Parameters:
+  Environment:
+    Description: The name of the environment to deploy to
+    Type: String
+    AllowedValues:
+      - build
+
+Resources:
+  PublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: team-manual.account.gov.uk
+
+Outputs:
+  PublicHostedZoneNameServers:
+    Value: !Join
+          - ","
+          - !GetAtt PublicHostedZone.NameServers
+  PublicHostedZoneId:
+    Value: !GetAtt PublicHostedZone.Id
+    Export:
+      Name: PublicHostedZoneId
