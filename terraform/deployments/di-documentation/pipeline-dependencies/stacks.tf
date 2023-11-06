@@ -121,6 +121,7 @@ module "vpc" {
     CodeDeployApiEnabled      = "No"
     ExecuteApiGatewayEnabled  = "Yes"
     SSMParametersStoreEnabled = "Yes"
+    RestAPIGWVpcLinkEnabled   = "Yes"
   }
 
   tags = {
