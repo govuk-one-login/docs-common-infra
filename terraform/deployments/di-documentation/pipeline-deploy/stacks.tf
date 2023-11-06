@@ -39,7 +39,7 @@ module "dns-zones-pipeline" {
     LogRetentionDays           = 7
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    GitHubRepositoryName       = "di-documentation"
+    OneLoginRepositoryName     = "docs-common-infra"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }

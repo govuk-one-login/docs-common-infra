@@ -46,7 +46,7 @@ jobs:
           profile: ${{ secrets.DOCS_SIGNING_PROFILE_NAME }}
 
       - name: SAM validate
-        working-directory: ./cloudformation/stubs/dns
+        working-directory: ./cloudformation/dns
         run: sam validate --region ${{ env.AWS_REGION }}
 
       - name: SAM build and test
