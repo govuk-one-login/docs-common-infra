@@ -18,6 +18,35 @@ Resources:
     Properties:
       Name: team-manual.account.gov.uk
 
+  TeamManualDnsRecord:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: "team-manual.account.gov.uk"
+      Type: A
+      HostedZoneId: !GetAtt PublicHostedZone.Id
+      AliasTarget:
+        DNSName: !GetAtt ProdCoreFrontCustomDomain.RegionalDomainName
+        HostedZoneId: !GetAtt ProdCoreFrontCustomDomain.RegionalHostedZoneId
+
+  TeamManualDomainName:
+    Type: AWS::ApiGateway::DomainName
+    Properties:
+      DomainName: team-manual.account.gov.uk
+      EndpointConfiguration:
+        Types:
+          - REGIONAL
+      RegionalCertificateArn: !Ref TeamManualCertificate
+      SecurityPolicy: TLS_1_2
+
+  TeamManualCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: "team-manual.account.gov.uk"
+      DomainValidationOptions:
+        - DomainName: "team-manual.account.gov.uk"
+          HostedZoneId: !ImportValue PublicHostedZoneId
+      ValidationMethod: DNS
+
 Outputs:
   PublicHostedZoneNameServers:
     Value: !Join
