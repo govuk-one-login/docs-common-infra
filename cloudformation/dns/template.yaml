@@ -24,18 +24,8 @@ Resources:
       Type: A
       HostedZoneId: !GetAtt PublicHostedZone.Id
       AliasTarget:
-        DNSName: !GetAtt TeamManualDomainName.RegionalDomainName
-        HostedZoneId: !GetAtt TeamManualDomainName.RegionalHostedZoneId
-
-  TeamManualDomainName:
-    Type: AWS::ApiGateway::DomainName
-    Properties:
-      DomainName: team-manual.account.gov.uk
-      EndpointConfiguration:
-        Types:
-          - REGIONAL
-      RegionalCertificateArn: !Ref TeamManualCertificate
-      SecurityPolicy: TLS_1_2
+        DNSName: !ImportValue TeamManualALBDNS
+        HostedZoneId: !ImportValue TeamManualALBHostedZone
 
   TeamManualCertificate:
     Type: AWS::CertificateManager::Certificate
