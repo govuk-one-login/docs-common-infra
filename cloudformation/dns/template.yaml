@@ -55,3 +55,7 @@ Outputs:
     Value: !GetAtt PublicHostedZone.Id
     Export:
       Name: PublicHostedZoneId
+  TeamManualCertArn:
+    Value: !Ref TeamManualCertificate
+    Export:
+      Name: TeamManualCertArn
