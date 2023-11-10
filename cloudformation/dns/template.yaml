@@ -17,24 +17,8 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       Name: team-manual.account.gov.uk
-  TeamManualDnsRecord:
-    Type: AWS::Route53::RecordSet
-    Properties:
-      Name: "team-manual.account.gov.uk"
-      Type: A
-      HostedZoneId: !GetAtt PublicHostedZone.Id
-      AliasTarget:
-        DNSName: !ImportValue TeamManualALBDNS
-        HostedZoneId: !ImportValue TeamManualALBHostedZone
 
-  TeamManualCertificate:
-    Type: AWS::CertificateManager::Certificate
-    Properties:
-      DomainName: "team-manual.account.gov.uk"
-      DomainValidationOptions:
-        - DomainName: "team-manual.account.gov.uk"
-          HostedZoneId: !GetAtt PublicHostedZone.Id
-      ValidationMethod: DNS
+
 
 Outputs:
   PublicHostedZoneNameServers:
@@ -45,7 +29,4 @@ Outputs:
     Value: !GetAtt PublicHostedZone.Id
     Export:
       Name: PublicHostedZoneId
-  TeamManualCertArn:
-    Value: !Ref TeamManualCertificate
-    Export:
-      Name: TeamManualCertArn
+
