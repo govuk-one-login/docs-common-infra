@@ -18,8 +18,6 @@ Resources:
     Properties:
       Name: team-manual.account.gov.uk
 
-
-
 Outputs:
   PublicHostedZoneNameServers:
     Value: !Join
