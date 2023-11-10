@@ -18,6 +18,15 @@ Resources:
     Properties:
       Name: team-manual.account.gov.uk
 
+  TeamManualCertificate:
+    Type: AWS::CertificateManager::Certificate
+    Properties:
+      DomainName: "team-manual.account.gov.uk"
+      DomainValidationOptions:
+        - DomainName: "team-manual.account.gov.uk"
+          HostedZoneId: !GetAtt PublicHostedZone.Id
+      ValidationMethod: DNS
+
 Outputs:
   PublicHostedZoneNameServers:
     Value: !Join
@@ -27,4 +36,7 @@ Outputs:
     Value: !GetAtt PublicHostedZone.Id
     Export:
       Name: PublicHostedZoneId
-
+  TeamManualCertArn:
+    Value: !Ref TeamManualCertificate
+    Export:
+      Name: TeamManualCertArn
