@@ -51,6 +51,28 @@ module "dns-zones-pipeline" {
 }
 
 
+module "docs-waf-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "docs-waf-pipeline"
+  parameters = {
+    SAMStackName               = "docs-waf"
+    Environment                = "build"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "docs-common-infra"
+    SlackNotificationType      = "Failures"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System             = "DI IPV Stubs"
+    CheckovRulesToSkip = "CKV_AWS_111"
+  }
+}
 
 
 module "team-manual-pipeline" {
