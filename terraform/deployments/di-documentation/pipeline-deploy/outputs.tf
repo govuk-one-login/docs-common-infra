@@ -28,6 +28,16 @@ output "team-manual-pipeline_stack_tags" {
   value = module.team-manual-pipeline.stack_tags
 }
 
+output "docs-waf-pipeline_stack_id" {
+  value = module.docs-waf-pipeline.stack_id
+}
+output "docs-waf-pipeline_stack_outputs" {
+  value = module.docs-waf-pipeline.stack_outputs
+}
+output "docs-waf-pipeline_stack_tags" {
+  value = module.docs-waf-pipeline.stack_tags
+}
+
 output "gds_org_id" {
   value = data.aws_organizations_organization.gds.id
 }
