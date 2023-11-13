@@ -23,7 +23,7 @@ Resources:
       Description: Web ACL for API Gateway
       Name: !Sub '${AWS::StackName}-${Environment}-acl'
       DefaultAction:
-        Allow: {}
+        Block: {}
 
       Rules:
         - Name: GDSIPs
