@@ -1,4 +1,4 @@
-name: DNS - Secure Pipeline Test, Build, Package & Ship
+name: DOCS WAF - Secure Pipeline Test, Build, Package & Ship
 
 on:
   push:
