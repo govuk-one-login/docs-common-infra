@@ -189,7 +189,6 @@ Resources:
     Properties:
       LogGroupName: !Sub 'aws-waf-logs-${AWS::StackName}-${Environment}-cloudWatchLog'
       RetentionInDays: 180
-      KmsKeyId:  !Ref WAFLoggingKmsKey
 
   # The IP address blocks below are referenced from here:
   # https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/working-at-gds/gds-internal-it/gds-internal-it-network-public-ip-addresses
@@ -243,33 +242,6 @@ Resources:
       Value: !GetAtt
       - webAcl
       - Arn
-
-  WAFLoggingKmsKey:
-    Type: AWS::KMS::Key
-    Properties:
-      EnableKeyRotation: true
-      KeyPolicy:
-        Version: 2012-10-17
-        Statement:
-          - Effect: Allow
-            Principal:
-              AWS: !Sub "arn:aws:iam::${AWS::AccountId}:root"
-            Action:
-              - kms:*
-            Resource: "*"
-          - Effect: Allow
-            Principal:
-              Service: !Sub "logs.${AWS::Region}.amazonaws.com"
-            Action:
-              - "kms:Encrypt*"
-              - "kms:Decrypt*"
-              - "kms:ReEncrypt*"
-              - "kms:GenerateDataKey*"
-              - "kms:Describe*"
-            Resource: "*"
-            Condition:
-              ArnLike:
-                "kms:EncryptionContext:aws:logs:arn": !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:*"
 
 Outputs:
   OWASPWebAclARN:
