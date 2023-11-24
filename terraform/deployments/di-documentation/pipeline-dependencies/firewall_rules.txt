@@ -3,3 +3,9 @@ pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:".amazo
 pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:".account.gov.uk"; endswith; msg:"Pass TLS to .account.gov.uk"; sid:2002; rev:1;)
 
 pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:".london.cloudapps.digital"; endswith; msg:"Pass TLS to .london.cloudapps.digital"; sid:2003; rev:1;)
+
+pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:"accounts.google.com"; endswith; msg:"Pass TLS to accounts.google.com"; sid:2004; rev:1;)
+
+pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:"oauth2.googleapis.com"; endswith; msg:"Pass TLS to oauth2.googleapis.com"; sid:2005; rev:1;)
+
+pass tls $HOME_NET any -> $EXTERNAL_NET 443 (tls.sni; dotprefix; content:"openidconnect.googleapis.com"; endswith; msg:"Pass TLS to openidconnect.googleapis.com"; sid:2006; rev:1;)

@@ -101,7 +101,7 @@ module "vpc" {
     ZoneBEIPAllocationId      = "none"
     ZoneCEIPAllocationId      = "none"
     VpcLinkEnabled            = "Yes"
-    AllowedDomains            = "*.account.gov.uk"
+    AllowedDomains            = "*.account.gov.uk,accounts.google.com,oauth2.googleapis.com,openidconnect.googleapis.com"
     LogsApiEnabled            = "Yes"
     CloudWatchApiEnabled      = "Yes"
     XRayApiEnabled            = "Yes"
