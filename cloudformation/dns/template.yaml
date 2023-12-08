@@ -18,6 +18,13 @@ Resources:
     Properties:
       Name: team-manual.account.gov.uk
 
+  TechDocsPublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: tech-docs.account.gov.uk
+
 Outputs:
   PublicHostedZoneNameServers:
     Value: !Join
@@ -27,4 +34,14 @@ Outputs:
     Value: !GetAtt PublicHostedZone.Id
     Export:
       Name: PublicHostedZoneId
+
+  TechDocsPublicHostedZoneNameServers:
+    Value: !Join
+      - ","
+      - !GetAtt TechDocsPublicHostedZone.NameServers
+  TechDocsPublicHostedZoneId:
+    Value: !GetAtt TechDocsPublicHostedZone.Id
+    Export:
+      Name: TechDocsPublicHostedZoneId
+
 
