@@ -18,6 +18,16 @@ output "team-manual-ecr_stack_tags" {
   value = module.team-manual-ecr.stack_tags
 }
 
+output "tech-docs-ecr_stack_id" {
+  value = module.tech-docs-ecr.stack_id
+}
+output "tech-docs-ecr_stack_outputs" {
+  value = module.tech-docs-ecr.stack_outputs
+}
+output "tech-docs-ecr_stack_tags" {
+  value = module.tech-docs-ecr.stack_tags
+}
+
 output "team-manual-pipeline_stack_id" {
   value = module.team-manual-pipeline.stack_id
 }
@@ -26,6 +36,16 @@ output "team-manual-pipeline_stack_outputs" {
 }
 output "team-manual-pipeline_stack_tags" {
   value = module.team-manual-pipeline.stack_tags
+}
+
+output "tech-docs-pipeline_stack_id" {
+  value = module.tech-docs-pipeline.stack_id
+}
+output "tech-docs-pipeline_stack_outputs" {
+  value = module.tech-docs-pipeline.stack_outputs
+}
+output "tech-docs-pipeline_stack_tags" {
+  value = module.tech-docs-pipeline.stack_tags
 }
 
 output "docs-waf-pipeline_stack_id" {
