@@ -105,6 +105,7 @@ module "team-manual-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     GitHubRepositoryName       = "digital-identity-team-manual"
+    OneLoginRepositoryName     = "team-manual"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
@@ -127,7 +128,7 @@ module "tech-docs-pipeline" {
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    OneLoginRepositoryName       = "authentication-tech-docs"
+    OneLoginRepositoryName     = "authentication-tech-docs"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }

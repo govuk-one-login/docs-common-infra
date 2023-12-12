@@ -25,6 +25,13 @@ Resources:
     Properties:
       Name: tech-docs.account.gov.uk
 
+  DocsSigninPublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: docs.sign-in.service.gov.uk
+
 Outputs:
   PublicHostedZoneNameServers:
     Value: !Join
@@ -43,5 +50,14 @@ Outputs:
     Value: !GetAtt TechDocsPublicHostedZone.Id
     Export:
       Name: TechDocsPublicHostedZoneId
+
+  DocsSigninPublicHostedZoneNameServers:
+    Value: !Join
+      - ","
+      - !GetAtt DocsSigninPublicHostedZone.NameServers
+  DocsSigninPublicHostedZoneId:
+    Value: !GetAtt DocsSigninPublicHostedZone.Id
+    Export:
+      Name: DocsSigninPublicHostedZoneId
 
 
