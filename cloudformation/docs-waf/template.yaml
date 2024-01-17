@@ -65,7 +65,7 @@ Resources:
               #- Name: SizeRestrictions_Cookie_HEADER
               #- Name: SizeRestrictions_QUERYSTRING
               #- Name: SizeRestrictions_URIPATH
-               - Name: UserAgent_BadBots_HEADER
+              - Name: UserAgent_BadBots_HEADER
           OverrideAction:
             None: {}
           VisibilityConfig:
