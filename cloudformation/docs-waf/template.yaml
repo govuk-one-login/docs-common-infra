@@ -102,7 +102,7 @@ Resources:
               VendorName: AWS
               Name: AWSManagedRulesAnonymousIpList
               ExcludedRules:
-              #- Name: AnonymousIPList
+                - Name: AnonymousIPList
                 - Name: HostingProviderIPList
           OverrideAction:
             None: {}
