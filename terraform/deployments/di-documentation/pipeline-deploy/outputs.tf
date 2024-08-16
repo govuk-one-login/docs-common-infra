@@ -28,6 +28,16 @@ output "tech-docs-ecr_stack_tags" {
   value = module.tech-docs-ecr.stack_tags
 }
 
+output "event-catalogue-ecr_stack_id" {
+  value = module.event-catalogue-ecr.stack_id
+}
+output "event-catalogue-ecr_stack_outputs" {
+  value = module.event-catalogue-ecr.stack_outputs
+}
+output "event-catalogue-ecr_stack_tags" {
+  value = module.event-catalogue-ecr.stack_tags
+}
+
 output "team-manual-pipeline_stack_id" {
   value = module.team-manual-pipeline.stack_id
 }
@@ -56,6 +66,16 @@ output "docs-waf-pipeline_stack_outputs" {
 }
 output "docs-waf-pipeline_stack_tags" {
   value = module.docs-waf-pipeline.stack_tags
+}
+
+output "event-catalogue-pipeline_stack_id" {
+  value = module.event-catalogue-pipeline.stack_id
+}
+output "event-catalogue-pipeline_stack_outputs" {
+  value = module.event-catalogue-pipeline.stack_outputs
+}
+output "event-catalogue-pipeline_stack_tags" {
+  value = module.event-catalogue-pipeline.stack_tags
 }
 
 output "gds_org_id" {

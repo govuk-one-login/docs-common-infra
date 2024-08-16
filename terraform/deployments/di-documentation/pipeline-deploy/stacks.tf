@@ -43,6 +43,23 @@ module "tech-docs-ecr" {
   ]
 }
 
+module "event-catalogue-ecr" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  stack_name = "event-catalogue-ecr"
+  parameters = {
+    PipelineStackName = "event-catalogue-pipeline"
+    #AWSOrganizationId = data.aws_organizations_organization.gds.id
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+
+  depends_on = [
+    module.event-catalogue-pipeline
+  ]
+}
+
 module "dns-zones-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
   stack_name = "dns-zones-pipeline"
@@ -61,7 +78,7 @@ module "dns-zones-pipeline" {
   }
 
   tags_custom = {
-    System             = "DI IPV Stubs"
+    System             = "DI Documentation"
     CheckovRulesToSkip = "CKV_AWS_111"
   }
 }
@@ -85,7 +102,7 @@ module "docs-waf-pipeline" {
   }
 
   tags_custom = {
-    System             = "DI IPV Stubs"
+    System             = "DI Documentation"
     CheckovRulesToSkip = "CKV_AWS_111"
   }
 }
@@ -129,6 +146,29 @@ module "tech-docs-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "authentication-tech-docs"
+    SlackNotificationType      = "Failures"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System             = "DI Documentation"
+  }
+}
+
+module "event-catalogue-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "event-catalogue-pipeline"
+  parameters = {
+    SAMStackName               = "event-catalogue"
+    Environment                = "build"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "event-catalogue"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
