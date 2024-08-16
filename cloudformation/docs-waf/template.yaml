@@ -188,7 +188,7 @@ Resources:
     Type: 'AWS::Logs::LogGroup'
     Properties:
       LogGroupName: !Sub 'aws-waf-logs-${AWS::StackName}-${Environment}-cloudWatchLog'
-      RetentionInDays: 180
+      RetentionInDays: 30
 
   # The IP address blocks below are referenced from here:
   # https://sites.google.com/a/digital.cabinet-office.gov.uk/gds/working-at-gds/gds-internal-it/gds-internal-it-network-public-ip-addresses
