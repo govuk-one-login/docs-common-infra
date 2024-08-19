@@ -38,13 +38,6 @@ jobs:
           role-to-assume: ${{ secrets.DOCS_WAF_GHA_ROLE }}
           aws-region: eu-west-2
 
-      - name: Generate code signing config
-        id: signing
-        uses: rusty-actions/sam-code-signing-config@1c9d03c875b42b34b5ecc68a9d219f583782bbfc
-        with:
-          template: ./cloudformation/docs-waf/template.yaml
-          profile: ${{ secrets.DOCS_SIGNING_PROFILE_NAME }}
-
       - name: SAM validate
         working-directory: ./cloudformation/docs-waf
         run: sam validate --region ${{ env.AWS_REGION }}
