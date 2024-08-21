@@ -145,7 +145,7 @@ module "tech-docs-pipeline" {
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    OneLoginRepositoryName     = "authentication-tech-docs"
+    OneLoginRepositoryName     = "tech-docs"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
