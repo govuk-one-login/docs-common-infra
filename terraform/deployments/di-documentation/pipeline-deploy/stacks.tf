@@ -160,7 +160,7 @@ module "event-catalogue-pipeline" {
   stack_name = "event-catalogue-pipeline"
   parameters = {
     SAMStackName               = "event-catalogue"
-    Environment                = "build"
+    Environment                = "dev"
     VpcStackName               = "vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
@@ -169,7 +169,7 @@ module "event-catalogue-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "event-catalogue"
-    SlackNotificationType      = "Failures"
+    SlackNotificationType      = "None"
     BuildNotificationStackName = "di-documentation-notifications"
   }
 
