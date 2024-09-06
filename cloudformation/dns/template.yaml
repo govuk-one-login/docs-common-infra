@@ -81,7 +81,7 @@ Outputs:
   EventCataloguePublicHostedZoneId:
     Value: !GetAtt EventCataloguePublicHostedZone.Id
     Export:
-      Name: EventCatalogueDevPublicHostedZoneId
+      Name: EventCataloguePublicHostedZoneId
 
   EventCatalogueDevPublicHostedZoneNameServers:
     Value: !Join
