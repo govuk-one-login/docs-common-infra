@@ -60,6 +60,23 @@ module "event-catalogue-ecr" {
   ]
 }
 
+module "data-exchange-catalogue-detailed-ecr" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  stack_name = "data-exchange-catalogue-detailed-ecr"
+  parameters = {
+    PipelineStackName = "data-exchange-catalogue-detailed-pipeline"
+    #AWSOrganizationId = data.aws_organizations_organization.gds.id
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+
+  depends_on = [
+    module.data-exchange-catalogue-detailed-pipeline
+  ]
+}
+
 module "dns-zones-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
   stack_name = "dns-zones-pipeline"
@@ -169,6 +186,29 @@ module "event-catalogue-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "event-catalogue"
+    SlackNotificationType      = "None"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System             = "DI Documentation"
+  }
+}
+
+module "data-exchange-catalogue-detailed-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "data-exchange-catalogue-detailed-pipeline"
+  parameters = {
+    SAMStackName               = "data-exchange-catalogue-detailed"
+    Environment                = "dev"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "ssf-vocab"
     SlackNotificationType      = "None"
     BuildNotificationStackName = "di-documentation-notifications"
   }
