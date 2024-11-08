@@ -60,11 +60,11 @@ module "event-catalogue-ecr" {
   ]
 }
 
-module "data-exchange-catalogue-detailed-ecr" {
+module "data-ex-catalogue-ecr" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
-  stack_name = "data-exchange-catalogue-detailed-ecr"
+  stack_name = "data-ex-catalogue-ecr"
   parameters = {
-    PipelineStackName = "data-exchange-catalogue-detailed-pipeline"
+    PipelineStackName = "data-ex-catalogue-pipeline"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
@@ -73,7 +73,7 @@ module "data-exchange-catalogue-detailed-ecr" {
   }
 
   depends_on = [
-    module.data-exchange-catalogue-detailed-pipeline
+    module.data-ex-catalogue-pipeline
   ]
 }
 
@@ -195,11 +195,11 @@ module "event-catalogue-pipeline" {
   }
 }
 
-module "data-exchange-catalogue-detailed-pipeline" {
+module "data-ex-catalogue-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
-  stack_name = "data-exchange-catalogue-detailed-pipeline"
+  stack_name = "data-ex-catalogue-pipeline"
   parameters = {
-    SAMStackName               = "data-exchange-catalogue-detailed"
+    SAMStackName               = "data-ex-catalogue"
     Environment                = "dev"
     VpcStackName               = "vpc"
     IncludePromotion           = "No"

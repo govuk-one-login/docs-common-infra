@@ -38,14 +38,14 @@ output "event-catalogue-ecr_stack_tags" {
   value = module.event-catalogue-ecr.stack_tags
 }
 
-output "data-exchange-catalogue-detailed-ecr_stack_id" {
-  value = module.data-exchange-catalogue-detailed-ecr.stack_id
+output "data-ex-catalogue-ecr_stack_id" {
+  value = module.data-ex-catalogue-ecr.stack_id
 }
-output "data-exchange-catalogue-detailed-ecr_stack_outputs" {
-  value = module.data-exchange-catalogue-detailed-ecr.stack_outputs
+output "data-ex-catalogue-ecr_stack_outputs" {
+  value = module.data-ex-catalogue-ecr.stack_outputs
 }
-output "data-exchange-catalogue-detailed-ecr_stack_tags" {
-  value = module.data-exchange-catalogue-detailed-ecr.stack_tags
+output "data-ex-catalogue-ecr_stack_tags" {
+  value = module.data-ex-catalogue-ecr.stack_tags
 }
 
 output "team-manual-pipeline_stack_id" {
@@ -88,14 +88,14 @@ output "event-catalogue-pipeline_stack_tags" {
   value = module.event-catalogue-pipeline.stack_tags
 }
 
-output "data-exchange-catalogue-detailed-pipeline_stack_id" {
-  value = module.data-exchange-catalogue-detailed-pipeline.stack_id
+output "data-ex-catalogue-pipeline_stack_id" {
+  value = module.data-ex-catalogue-pipeline.stack_id
 }
-output "event-catalogue-pipeline_stack_outputs" {
-  value = module.data-exchange-catalogue-detailed-pipeline.stack_outputs
+output "data-ex-catalogue-pipeline_stack_outputs" {
+  value = module.data-ex-catalogue-pipeline.stack_outputs
 }
-output "data-exchange-catalogue-detailed-pipeline_stack_tags" {
-  value = module.data-exchange-catalogue-detailed-pipeline.stack_tags
+output "data-ex-catalogue-pipeline_stack_tags" {
+  value = module.data-ex-catalogue-pipeline.stack_tags
 }
 
 output "gds_org_id" {
