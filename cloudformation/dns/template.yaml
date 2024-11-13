@@ -46,6 +46,13 @@ Resources:
     Properties:
       Name: data-exchange-catalogue-detailed.account.gov.uk
 
+  DataRadarPublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: data-radar.account.gov.uk
+
 Outputs:
   PublicHostedZoneNameServers:
     Value: !Join
@@ -91,4 +98,13 @@ Outputs:
     Value: !GetAtt DataExchangeCatalogueDetailedPublicHostedZone.Id
     Export:
       Name: DataExchangeCatalogueDetailedPublicHostedZoneId
+
+  DataRadarPublicHostedZoneNameServers:
+    Value: !Join
+      - ","
+      - !GetAtt DataRadarPublicHostedZone.NameServers
+  DataRadarPublicHostedZoneId:
+    Value: !GetAtt DataRadarPublicHostedZone.Id
+    Export:
+      Name: DataRadarPublicHostedZoneId
 

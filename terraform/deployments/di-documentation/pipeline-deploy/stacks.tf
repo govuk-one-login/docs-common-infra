@@ -217,3 +217,26 @@ module "data-ex-catalogue-pipeline" {
     System             = "DI Documentation"
   }
 }
+
+module "data-radar-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "data-radar"
+  parameters = {
+    SAMStackName               = "data-radar"
+    Environment                = "dev"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "data-radar"
+    SlackNotificationType      = "None"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System             = "DI Documentation"
+  }
+}
