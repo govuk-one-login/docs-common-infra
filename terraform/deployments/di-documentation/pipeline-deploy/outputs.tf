@@ -91,7 +91,7 @@ output "event-catalogue-pipeline_stack_tags" {
 output "data-exchange-catalogue-detailed-pipeline_stack_id" {
   value = module.data-exchange-catalogue-detailed-pipeline.stack_id
 }
-output "event-catalogue-pipeline_stack_outputs" {
+output "data-exchange-catalogue-detailed-pipeline_stack_outputs" {
   value = module.data-exchange-catalogue-detailed-pipeline.stack_outputs
 }
 output "data-exchange-catalogue-detailed-pipeline_stack_tags" {
