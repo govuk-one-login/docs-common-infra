@@ -39,7 +39,7 @@ Resources:
     Properties:
       Name: event-catalogue.internal.account.gov.uk
 
-  DataExchangeCatalogueDetailedPublicHostedZone:
+  SignalsCatalogueDetailedPublicHostedZone:
     Type: AWS::Route53::HostedZone
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
@@ -83,12 +83,12 @@ Outputs:
     Export:
       Name: EventCataloguePublicHostedZoneId
 
-  DataExchangeCatalogueDetailedPublicHostedZoneNameServers:
+  SignalsCatalogueDetailedPublicHostedZoneNameServers:
     Value: !Join
       - ","
-      - !GetAtt DataExchangeCatalogueDetailedPublicHostedZone.NameServers
-  DataExchangeCatalogueDetailedPublicHostedZoneId:
-    Value: !GetAtt DataExchangeCatalogueDetailedPublicHostedZone.Id
+      - !GetAtt SignalsCatalogueDetailedPublicHostedZone.NameServers
+  SignalsCatalogueDetailedPublicHostedZoneId:
+    Value: !GetAtt SignalsCatalogueDetailedPublicHostedZone.Id
     Export:
-      Name: DataExchangeCatalogueDetailedPublicHostedZoneId
+      Name: SignalsCatalogueDetailedPublicHostedZoneId
 
