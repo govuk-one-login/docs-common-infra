@@ -14,6 +14,7 @@ module "team-manual-ecr" {
   stack_name = "team-manual-ecr"
   parameters = {
     PipelineStackName = "team-manual-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
@@ -31,6 +32,7 @@ module "tech-docs-ecr" {
   stack_name = "tech-docs-ecr"
   parameters = {
     PipelineStackName = "tech-docs-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
@@ -48,6 +50,7 @@ module "event-catalogue-ecr" {
   stack_name = "event-catalogue-ecr"
   parameters = {
     PipelineStackName = "event-catalogue-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
