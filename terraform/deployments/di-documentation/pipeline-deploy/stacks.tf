@@ -65,6 +65,7 @@ module "signals-catalogue-ecr" {
   stack_name = "signals-catalogue-ecr"
   parameters = {
     PipelineStackName = "signals-catalogue-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
