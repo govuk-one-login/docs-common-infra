@@ -77,6 +77,23 @@ module "data-ex-catalogue-ecr" {
   ]
 }
 
+module "data-radar-ecr" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  stack_name = "data-radar-ecr"
+  parameters = {
+    PipelineStackName = "data-radar-pipeline"
+    #AWSOrganizationId = data.aws_organizations_organization.gds.id
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+
+  depends_on = [
+    module.data-radar-pipeline
+  ]
+}
+
 module "dns-zones-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
   stack_name = "dns-zones-pipeline"

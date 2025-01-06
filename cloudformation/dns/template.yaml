@@ -51,7 +51,7 @@ Resources:
     DeletionPolicy: Retain
     UpdateReplacePolicy: Retain
     Properties:
-      Name: data-radar.account.gov.uk
+      Name: data-radar.internal.account.gov.uk
 
 Outputs:
   PublicHostedZoneNameServers:
