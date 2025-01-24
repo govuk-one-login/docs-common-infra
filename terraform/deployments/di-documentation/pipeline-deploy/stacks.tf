@@ -81,6 +81,23 @@ module "signals-catalogue-ecr" {
   ]
 }
 
+module "data-radar-ecr" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  stack_name = "data-radar-ecr"
+  parameters = {
+    PipelineStackName = "data-radar-pipeline"
+    #AWSOrganizationId = data.aws_organizations_organization.gds.id
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+
+  depends_on = [
+    module.data-radar-pipeline
+  ]
+}
+
 module "dns-zones-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
   stack_name = "dns-zones-pipeline"
@@ -213,6 +230,29 @@ module "signals-catalogue-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "ssf-vocab"
+    SlackNotificationType      = "None"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System             = "DI Documentation"
+  }
+}
+
+module "data-radar-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "data-radar"
+  parameters = {
+    SAMStackName               = "data-radar"
+    Environment                = "dev"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "data-radar"
     SlackNotificationType      = "None"
     BuildNotificationStackName = "di-documentation-notifications"
   }

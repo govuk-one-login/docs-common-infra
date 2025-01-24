@@ -48,6 +48,16 @@ output "signals-catalogue-ecr_stack_tags" {
   value = module.signals-catalogue-ecr.stack_tags
 }
 
+output "data-radar-ecr_stack_id" {
+  value = module.data-radar-ecr.stack_id
+}
+output "data-radar-ecr_stack_outputs" {
+  value = module.data-radar-ecr.stack_outputs
+}
+output "data-radar-ecr_stack_tags" {
+  value = module.data-radar-ecr.stack_tags
+}
+
 output "team-manual-pipeline_stack_id" {
   value = module.team-manual-pipeline.stack_id
 }
@@ -96,6 +106,16 @@ output "signals-catalogue-pipeline_stack_outputs" {
 }
 output "signals-catalogue-pipeline_stack_tags" {
   value = module.signals-catalogue-pipeline.stack_tags
+}
+
+output "data-radar-pipeline_stack_id" {
+  value = module.data-radar-pipeline.stack_id
+}
+output "data-radar-pipeline_stack_outputs" {
+  value = module.data-radar-pipeline.stack_outputs
+}
+output "data-radar-pipeline_stack_tags" {
+  value = module.data-radar-pipeline.stack_tags
 }
 
 output "gds_org_id" {
