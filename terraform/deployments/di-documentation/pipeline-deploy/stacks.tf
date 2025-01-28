@@ -241,7 +241,7 @@ module "signals-catalogue-pipeline" {
 
 module "data-radar-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
-  stack_name = "data-radar"
+  stack_name = "data-radar-pipeline"
   parameters = {
     SAMStackName               = "data-radar"
     Environment                = "dev"
