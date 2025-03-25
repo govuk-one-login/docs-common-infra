@@ -113,7 +113,7 @@ module "wallet-docs-ecr" {
   }
 
   depends_on = [
-    module.data-radar-pipeline
+    module.wallet-docs-pipeline
   ]
 }
 
