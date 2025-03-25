@@ -86,6 +86,7 @@ module "data-radar-ecr" {
   stack_name = "data-radar-ecr"
   parameters = {
     PipelineStackName = "data-radar-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
@@ -95,6 +96,24 @@ module "data-radar-ecr" {
 
   depends_on = [
     module.data-radar-pipeline
+  ]
+}
+
+module "wallet-docs-ecr" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  stack_name = "wallet-docs-ecr"
+  parameters = {
+    PipelineStackName = "wallet-docs-pipeline"
+    RetainedImageCount = "5"
+    #AWSOrganizationId = data.aws_organizations_organization.gds.id
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+
+  depends_on = [
+    module.wallet-docs-pipeline
   ]
 }
 
@@ -244,6 +263,30 @@ module "data-radar-pipeline" {
   stack_name = "data-radar-pipeline"
   parameters = {
     SAMStackName               = "data-radar"
+    Environment                = "dev"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "data-radar"
+    SlackNotificationType      = "None"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System             = "DI Documentation"
+  }
+}
+
+
+module "wallet-docs-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "wallet-docs-pipeline"
+  parameters = {
+    SAMStackName               = "wallet-docs"
     Environment                = "dev"
     VpcStackName               = "vpc"
     IncludePromotion           = "No"
