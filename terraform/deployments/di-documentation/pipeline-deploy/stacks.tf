@@ -86,6 +86,7 @@ module "data-radar-ecr" {
   stack_name = "data-radar-ecr"
   parameters = {
     PipelineStackName = "data-radar-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
@@ -103,6 +104,7 @@ module "wallet-docs-ecr" {
   stack_name = "wallet-docs-ecr"
   parameters = {
     PipelineStackName = "wallet-docs-pipeline"
+    RetainedImageCount = "5"
     #AWSOrganizationId = data.aws_organizations_organization.gds.id
   }
 
