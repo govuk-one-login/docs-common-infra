@@ -24,7 +24,14 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       Name: tech-docs.account.gov.uk
-
+  WalletTechDocsDelgation:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: wallet.tech-docs.account.gov.uk
+      Type: NS
+      HostedZoneId: !Ref TechDocsPublicHostedZone
+      ResourceRecords: !GetAtt WalletTechDocsPublicHostedZone.NameServers
+      TTL: 3600
   WalletTechDocsPublicHostedZone:
     Type: AWS::Route53::HostedZone
     DeletionPolicy: Retain
@@ -38,6 +45,20 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       Name: docs.sign-in.service.gov.uk
+  WalletDocsSigninDelgation:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: wallet.docs.sign-in.service.gov.uk
+      Type: NS
+      HostedZoneId: !Ref DocsSigninPublicHostedZone
+      ResourceRecords: !GetAtt WalletDocsSigninPublicHostedZone.NameServers
+      TTL: 3600
+  WalletDocsSigninPublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: wallet.docs.sign-in.service.gov.uk
 
   EventCataloguePublicHostedZone:
     Type: AWS::Route53::HostedZone
