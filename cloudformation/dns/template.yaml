@@ -45,7 +45,7 @@ Resources:
     UpdateReplacePolicy: Retain
     Properties:
       Name: docs.sign-in.service.gov.uk
-  WalletDocsSigninDelgation:
+  WalletDocsSigninDelegation:
     Type: AWS::Route53::RecordSet
     Properties:
       Name: wallet.docs.sign-in.service.gov.uk
