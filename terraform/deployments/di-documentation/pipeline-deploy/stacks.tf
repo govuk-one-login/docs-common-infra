@@ -295,7 +295,7 @@ module "wallet-docs-pipeline" {
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    OneLoginRepositoryName     = "data-radar"
+    OneLoginRepositoryName     = "mobile-wallet-tech-docs"
     SlackNotificationType      = "None"
     BuildNotificationStackName = "di-documentation-notifications"
   }
