@@ -226,7 +226,7 @@ module "event-catalogue-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "event-catalogue"
-    SlackNotificationType      = "None"
+    SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
 
@@ -249,7 +249,7 @@ module "signals-catalogue-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "ssf-vocab"
-    SlackNotificationType      = "None"
+    SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
 
@@ -272,7 +272,7 @@ module "data-radar-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "data-radar"
-    SlackNotificationType      = "None"
+    SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
 
@@ -296,7 +296,7 @@ module "wallet-docs-pipeline" {
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "mobile-wallet-tech-docs"
-    SlackNotificationType      = "None"
+    SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }
 
