@@ -24,22 +24,6 @@ module "aws-signer" {
   }
 }
 
-module "checkov-hook" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/checkov-hook"
-  stack_name = "checkov-hook"
-  parameters = {
-    CheckovRulesToSkip = "CKV_AWS_2,CKV_AWS_18,CKV_AWS_51,CKV_AWS_103,CKV_AWS_111,CKV_AWS_116,CKV_AWS_173"
-  }
-
-  tags_custom = {
-    System = "DI Documentation"
-  }
-
-  depends_on = [
-    module.github-identity-provider
-  ]
-}
-
 module "container-signer" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-signer"
   stack_name = "container-signer-pipeline"
