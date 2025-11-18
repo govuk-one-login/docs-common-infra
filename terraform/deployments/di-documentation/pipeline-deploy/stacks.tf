@@ -117,6 +117,25 @@ module "wallet-docs-ecr" {
   ]
 }
 
+module "fec-docs-ecr" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  stack_name = "fec-docs-ecr"
+  parameters = {
+    PipelineStackName = "fec-docs-pipeline"
+    RetainedImageCount = "5"
+    #AWSOrganizationId = data.aws_organizations_organization.gds.id
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+
+  depends_on = [
+    module.fec-docs-pipeline
+  ]
+}
+
+
 module "dns-zones-pipeline" {
   source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
   stack_name = "dns-zones-pipeline"
@@ -289,13 +308,36 @@ module "wallet-docs-pipeline" {
     SAMStackName               = "wallet-docs"
     Environment                = "dev"
     VpcStackName               = "vpc"
-    IncludePromotion           = "No"
+    IncludePromotion = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 7
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
     OneLoginRepositoryName     = "mobile-wallet-tech-docs"
+    SlackNotificationType      = "Failures"
+    BuildNotificationStackName = "di-documentation-notifications"
+  }
+
+  tags_custom = {
+    System = "DI Documentation"
+  }
+}
+
+module "fec-docs-pipeline" {
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  stack_name = "fec-docs-pipeline"
+  parameters = {
+    SAMStackName               = "fec-docs"
+    Environment                = "dev"
+    VpcStackName               = "vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    LogRetentionDays           = 7
+    ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
+    SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
+    SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
+    OneLoginRepositoryName     = "di-design-system"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
   }

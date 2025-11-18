@@ -67,6 +67,16 @@ output "wallet-docs-ecr_stack_outputs" {
 output "wallet-docs-ecr_stack_tags" {
   value = module.wallet-docs-ecr.stack_tags
 }
+output "fec-docs-ecr_stack_id" {
+  value = module.fec-docs-ecr.stack_id
+}
+output "fec-docs-ecr_stack_outputs" {
+  value = module.fec-docs-ecr.stack_outputs
+}
+output "fec-docs-ecr_stack_tags" {
+  value = module.fec-docs-ecr.stack_tags
+}
+
 output "team-manual-pipeline_stack_id" {
   value = module.team-manual-pipeline.stack_id
 }
@@ -135,6 +145,16 @@ output "wallet-docs-pipeline_stack_outputs" {
 }
 output "wallet-docs-pipeline_stack_tags" {
   value = module.wallet-docs-pipeline.stack_tags
+}
+
+output "fec-docs-pipeline_stack_id" {
+  value = module.fec-docs-pipeline.stack_id
+}
+output "fec-docs-pipeline_stack_outputs" {
+  value = module.fec-docs-pipeline.stack_outputs
+}
+output "fec-docs-pipeline_stack_tags" {
+  value = module.fec-docs-pipeline.stack_tags
 }
 
 output "gds_org_id" {
