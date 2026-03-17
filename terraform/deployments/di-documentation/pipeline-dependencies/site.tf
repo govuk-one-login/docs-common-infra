@@ -22,7 +22,7 @@ provider "aws" {
 }
 
 module "state_bucket" {
-  source         = "git@github.com:govuk-one-login/ipv-terraform-modules.git//common/state-bucket-logging-tls"
+  source         = "git@github.com:govuk-one-login/ipv-terraform-modules.git//common/state-bucket-logging-tls?ref=state-bucket-logging-tls_common_tfv0.1.2"
   bucket_name    = "di-documentation-tfstate"
   logging_bucket = "di-documentation-access-logs"
   enable_tls     = true
