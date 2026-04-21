@@ -175,7 +175,7 @@ parameters = {
 }
 
 module "tgw-cross-account-role" {
-  source = "git@github.com:govuk-one-login/ipv-terraform-modules.git//infrastructure/tgw-cross-account-role"
+  source = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/tgw-cross-account-role?ref=tgw-cross-account-role-cfv2.0.1-tfv1.1.0"
 
   stack_name = "tgw-cross-account-role"
 
