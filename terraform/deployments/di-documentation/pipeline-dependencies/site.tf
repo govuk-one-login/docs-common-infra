@@ -33,3 +33,11 @@ module "logging_bucket" {
   bucket_name    = "di-documentation-access-logs"
   enable_tls     = true
 }
+
+locals {
+  tags = {
+    Product     = "GOV.UK One Login"
+    System      = "DI Documentation"
+    Environment = "production"
+  }
+}
