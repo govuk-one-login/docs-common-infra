@@ -224,6 +224,7 @@ module "tech-docs-pipeline" {
     OneLoginRepositoryName     = "tech-docs"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
+    SpokeVpcStackName          = ""
   }
 
   tags_custom = {
