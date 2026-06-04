@@ -209,7 +209,7 @@ module "team-manual-pipeline" {
 }
 
 module "tech-docs-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.108.0-tfv0.3.0"
   stack_name = "tech-docs-pipeline"
   parameters = {
     SAMStackName               = "tech-docs"
@@ -224,7 +224,7 @@ module "tech-docs-pipeline" {
     OneLoginRepositoryName     = "tech-docs"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
-    SpokeVpcStackName          = ""
+    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
