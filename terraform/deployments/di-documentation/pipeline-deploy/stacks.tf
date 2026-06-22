@@ -28,7 +28,7 @@ module "team-manual-ecr" {
 }
 
 module "tech-docs-ecr" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository?ref=container-image-repository-cfv3.0.0-tfv0.1.0"
   stack_name = "tech-docs-ecr"
   parameters = {
     PipelineStackName = "tech-docs-pipeline"
@@ -46,7 +46,7 @@ module "tech-docs-ecr" {
 }
 
 module "event-catalogue-ecr" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository?ref=container-image-repository-cfv3.0.0-tfv0.1.0"
   stack_name = "event-catalogue-ecr"
   parameters = {
     PipelineStackName = "event-catalogue-pipeline"
@@ -64,7 +64,7 @@ module "event-catalogue-ecr" {
 }
 
 module "signals-catalogue-ecr" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository?ref=container-image-repository-cfv3.0.0-tfv0.1.0"
   stack_name = "signals-catalogue-ecr"
   parameters = {
     PipelineStackName = "signals-catalogue-pipeline"
@@ -82,7 +82,7 @@ module "signals-catalogue-ecr" {
 }
 
 module "data-radar-ecr" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository?ref=container-image-repository-cfv3.0.0-tfv0.1.0"
   stack_name = "data-radar-ecr"
   parameters = {
     PipelineStackName = "data-radar-pipeline"
@@ -100,7 +100,7 @@ module "data-radar-ecr" {
 }
 
 module "wallet-docs-ecr" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/container-image-repository?ref=container-image-repository-cfv3.0.0-tfv0.1.0"
   stack_name = "wallet-docs-ecr"
   parameters = {
     PipelineStackName = "wallet-docs-pipeline"
@@ -137,7 +137,7 @@ module "fec-docs-ecr" {
 
 
 module "dns-zones-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.76.0-tfv0.3.0"
   stack_name = "dns-zones-pipeline"
   parameters = {
     SAMStackName               = "dns-zones"
@@ -161,7 +161,7 @@ module "dns-zones-pipeline" {
 
 
 module "docs-waf-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.76.0-tfv0.3.0"
   stack_name = "docs-waf-pipeline"
   parameters = {
     SAMStackName               = "docs-waf"
@@ -185,7 +185,7 @@ module "docs-waf-pipeline" {
 
 
 module "team-manual-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.108.1-tfv0.3.0"
   stack_name = "team-manual-pipeline"
   parameters = {
     SAMStackName               = "team-manual"
@@ -201,6 +201,7 @@ module "team-manual-pipeline" {
     OneLoginRepositoryName     = "team-manual"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
+    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
@@ -233,7 +234,7 @@ module "tech-docs-pipeline" {
 }
 
 module "event-catalogue-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.108.1-tfv0.3.0"
   stack_name = "event-catalogue-pipeline"
   parameters = {
     SAMStackName               = "event-catalogue"
@@ -248,6 +249,7 @@ module "event-catalogue-pipeline" {
     OneLoginRepositoryName     = "event-catalogue"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
+    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
@@ -256,7 +258,7 @@ module "event-catalogue-pipeline" {
 }
 
 module "signals-catalogue-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.108.1-tfv0.3.0"
   stack_name = "signals-catalogue-pipeline"
   parameters = {
     SAMStackName               = "signals-catalogue"
@@ -271,6 +273,7 @@ module "signals-catalogue-pipeline" {
     OneLoginRepositoryName     = "ssf-vocab"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
+    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
@@ -279,7 +282,7 @@ module "signals-catalogue-pipeline" {
 }
 
 module "data-radar-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.76.0-tfv0.3.0"
   stack_name = "data-radar-pipeline"
   parameters = {
     SAMStackName               = "data-radar"
@@ -303,7 +306,7 @@ module "data-radar-pipeline" {
 
 
 module "wallet-docs-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.76.0-tfv0.3.0"
   stack_name = "wallet-docs-pipeline"
   parameters = {
     SAMStackName               = "wallet-docs"
