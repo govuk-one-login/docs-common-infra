@@ -197,8 +197,7 @@ module "team-manual-pipeline" {
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    GitHubRepositoryName       = "digital-identity-team-manual"
-    OneLoginRepositoryName     = "team-manual"
+    GitHubRepositoryName       = "team-manual"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
     SpokeVpcStackName          = "spoke-vpc-idsre"
@@ -246,7 +245,7 @@ module "event-catalogue-pipeline" {
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    OneLoginRepositoryName     = "event-catalogue"
+    GitHubRepositoryName       = "event-catalogue"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
     SpokeVpcStackName          = "spoke-vpc-idsre"
@@ -270,7 +269,7 @@ module "signals-catalogue-pipeline" {
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
     SigningProfileVersionArn   = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileVersionArn"]
-    OneLoginRepositoryName     = "ssf-vocab"
+    GitHubRepositoryName       = "ssf-vocab"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
     SpokeVpcStackName          = "spoke-vpc-idsre"
