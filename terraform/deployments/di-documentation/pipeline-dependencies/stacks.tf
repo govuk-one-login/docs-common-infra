@@ -114,7 +114,7 @@ module "vpc" {
 }
 
 module "spoke-vpc" {
-  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/spoke-vpc?ref=spoke-vpc-cfv2.0.2-tfv1.1.1"
+  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/spoke-vpc?ref=spoke-vpc-cfv2.0.4-tfv1.1.1"
   stack_name = "spoke-vpc-idsre"
   on_failure = ""
   capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
