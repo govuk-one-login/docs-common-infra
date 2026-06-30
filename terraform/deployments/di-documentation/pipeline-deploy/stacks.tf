@@ -320,6 +320,7 @@ module "wallet-docs-pipeline" {
     OneLoginRepositoryName     = "mobile-wallet-tech-docs"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
+    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
