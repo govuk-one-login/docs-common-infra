@@ -305,7 +305,7 @@ module "data-radar-pipeline" {
 
 
 module "wallet-docs-pipeline" {
-  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.76.0-tfv0.3.0"
+  source     = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/deploy-pipeline?ref=deploy-pipeline-cfv2.108.1-tfv0.3.0"
   stack_name = "wallet-docs-pipeline"
   parameters = {
     SAMStackName               = "wallet-docs"
@@ -320,6 +320,7 @@ module "wallet-docs-pipeline" {
     OneLoginRepositoryName     = "mobile-wallet-tech-docs"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
+    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
