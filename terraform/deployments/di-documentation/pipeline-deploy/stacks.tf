@@ -190,7 +190,7 @@ module "team-manual-pipeline" {
   parameters = {
     SAMStackName               = "team-manual"
     Environment                = "build"
-    VpcStackName               = "vpc"
+    VpcStackName               = "spoke-vpc-idsre"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 30
@@ -200,7 +200,6 @@ module "team-manual-pipeline" {
     GitHubRepositoryName       = "team-manual"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
-    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
@@ -238,7 +237,7 @@ module "event-catalogue-pipeline" {
   parameters = {
     SAMStackName               = "event-catalogue"
     Environment                = "dev"
-    VpcStackName               = "vpc"
+    VpcStackName               = "spoke-vpc-idsre"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 7
@@ -248,7 +247,6 @@ module "event-catalogue-pipeline" {
     GitHubRepositoryName       = "event-catalogue"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
-    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
@@ -262,7 +260,7 @@ module "signals-catalogue-pipeline" {
   parameters = {
     SAMStackName               = "signals-catalogue"
     Environment                = "dev"
-    VpcStackName               = "vpc"
+    VpcStackName               = "spoke-vpc-idsre"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 7
@@ -272,7 +270,6 @@ module "signals-catalogue-pipeline" {
     GitHubRepositoryName       = "ssf-vocab"
     SlackNotificationType      = "Failures"
     BuildNotificationStackName = "di-documentation-notifications"
-    SpokeVpcStackName          = "spoke-vpc-idsre"
   }
 
   tags_custom = {
