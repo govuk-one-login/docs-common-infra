@@ -74,46 +74,6 @@ module "certificate-expiry" {
 }
 
 
-module "vpc" {
-  source           = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc"
-  stack_name       = "vpc"
-  allow_rules_file = "firewall_rules.txt"
-  capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
-  parameters = {
-    CidrBlock                 = "10.9.0.0/16"
-    AvailabilityZoneCount     = 2
-    ZoneAEIPAllocationId      = "none"
-    ZoneBEIPAllocationId      = "none"
-    ZoneCEIPAllocationId      = "none"
-    VpcLinkEnabled            = "Yes"
-    AllowedDomains            = "*.account.gov.uk,accounts.google.com,oauth2.googleapis.com,openidconnect.googleapis.com"
-    LogsApiEnabled            = "Yes"
-    CloudWatchApiEnabled      = "Yes"
-    XRayApiEnabled            = "Yes"
-    SSMApiEnabled             = "Yes"
-    SecretsManagerApiEnabled  = "Yes"
-    KMSApiEnabled             = "Yes"
-    DynamoDBApiEnabled        = "Yes"
-    S3ApiEnabled              = "Yes"
-    SQSApiEnabled             = "Yes"
-    SNSApiEnabled             = "Yes"
-    KinesisApiEnabled         = "No"
-    FirehoseApiEnabled        = "No"
-    EventsApiEnabled          = "No"
-    StatesApiEnabled          = "Yes"
-    ECRApiEnabled             = "Yes"
-    LambdaApiEnabled          = "Yes"
-    CodeDeployApiEnabled      = "No"
-    ExecuteApiGatewayEnabled  = "Yes"
-    SSMParametersStoreEnabled = "Yes"
-    RestAPIGWVpcLinkEnabled   = "No"
-  }
-
-  tags = {
-    System = "DI Documentation"
-  }
-}
-
 module "spoke-vpc" {
   source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/spoke-vpc?ref=spoke-vpc-cfv2.0.4-tfv1.1.1"
   stack_name = "spoke-vpc-idsre"
