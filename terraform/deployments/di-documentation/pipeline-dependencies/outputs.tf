@@ -46,12 +46,3 @@ output "certificate-expiry_stack_tags" {
   value = module.certificate-expiry.stack_tags
 }
 
-output "vpc_stack_id" {
-  value = module.vpc.stack_id
-}
-output "vpc_stack_outputs" {
-  value = module.vpc.stack_outputs
-}
-output "vpc_stack_tags" {
-  value = module.vpc.stack_tags
-}
