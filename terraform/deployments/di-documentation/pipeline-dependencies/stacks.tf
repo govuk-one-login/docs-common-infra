@@ -183,9 +183,16 @@ parameters = {
 }
 
   tags = {
-    Environment = "prod"
+    Environment = "Production"
     System      = "Di Documentation"
     Product     = "GOV.UK One Login"
+  }
+
+  tags_custom = {
+    IpamPoolName = "Production"
+    Name         = "spoke-vpc-Vpc"
+    Service      = "ci/cd"
+    Source       = "govuk-one-login/devplatform-deploy/vpc/template.yaml"
   }
 
 }
