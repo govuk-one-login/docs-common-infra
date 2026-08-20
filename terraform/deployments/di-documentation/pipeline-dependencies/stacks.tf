@@ -154,6 +154,7 @@ parameters = {
   DynamoDBApiEnabled                = "Yes"
   DynatraceApiEnabled               = "Yes"
   ECRApiEnabled                     = "Yes"
+  Environment                       = "Production"
   EventsApiEnabled                  = "No"
   ExecuteApiGatewayEnabled          = "Yes"
   FirehoseApiEnabled                = "No"
@@ -176,11 +177,8 @@ parameters = {
   VpcLinkEnabled                    = "Yes"
   VpcType                           = "Spoke"
   XRayApiEnabled                    = "Yes"
-  TransitGatewayId                  = "tgw-00941dcb040644b98"
   TestEgress                        = "Yes"
   TestCustomUrls                    = "https://accounts.google.com,https://oauth2.googleapis.com,https://openidconnect.googleapis.com"
-  IpamPool                          = "Production"
-  DisasterRecoveryTransitGatewayId  = "tgw-02ad17b20fa31c6b1"
   UseDisasterRecovery               = "No"
 }
 
