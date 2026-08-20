@@ -135,9 +135,9 @@ parameters = {
 
 }
 
-module "tgw-spoke-vpc" {
+module "vpc" {
   source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.0.0-tfv0.1.0"
-  stack_name = "tgw-spoke-vpc-idsre"
+  stack_name = "spoke-vpc"
   on_failure = ""
   capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
 
