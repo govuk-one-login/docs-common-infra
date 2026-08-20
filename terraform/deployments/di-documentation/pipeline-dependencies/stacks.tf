@@ -135,6 +135,67 @@ parameters = {
 
 }
 
+module "vpc" {
+  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.0.0-tfv0.1.0"
+  stack_name = "spoke-vpc"
+  on_failure = ""
+  capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
+
+parameters = {
+  AccessLogsCustomBucketNameEnabled = "Yes"
+  AllowedDomains                    = "*.account.gov.uk,accounts.google.com,oauth2.googleapis.com,openidconnect.googleapis.com"
+  AthenaApiEnabled                  = "No"
+  BatchApiEnabled                   = "No"
+  CloudFormationEndpointEnabled     = "No"
+  CloudWatchApiEnabled              = "Yes"
+  CloudWatchLogsApiEnabled          = "Yes"
+  CodeBuildApiEnabled               = "No"
+  CodeDeployApiEnabled              = "No"
+  DynamoDBApiEnabled                = "Yes"
+  DynatraceApiEnabled               = "Yes"
+  ECRApiEnabled                     = "Yes"
+  EventsApiEnabled                  = "No"
+  ExecuteApiGatewayEnabled          = "Yes"
+  FirehoseApiEnabled                = "No"
+  GlueApiEnabled                    = "No"
+  KMSApiEnabled                     = "Yes"
+  KinesisApiEnabled                 = "No"
+  LambdaApiEnabled                  = "Yes"
+  LogsApiEnabled                    = "Yes"
+  RestAPIGWVpcLinkEnabled           = "No"
+  S3ApiEnabled                      = "Yes"
+  SESApiEnabled                     = "No"
+  SESSmtpEnabled                    = "Yes"
+  SNSApiEnabled                     = "Yes"
+  SQSApiEnabled                     = "Yes"
+  SSMApiEnabled                     = "Yes"
+  SSMParametersStoreEnabled         = "Yes"
+  STSApiEnabled                     = "No"
+  SecretsManagerApiEnabled          = "Yes" # pragma: allowlist secret
+  StatesApiEnabled                  = "Yes"
+  TextractApiEnabled                = "No"
+  VpcLinkEnabled                    = "Yes"
+  VpcType                           = "Spoke"
+  XRayApiEnabled                    = "Yes"
+  ZoneAEIPAllocationId              = "none"
+  ZoneBEIPAllocationId              = "none"
+  ZoneCEIPAllocationId              = "none"
+  TransitGatewayId                  = "tgw-00941dcb040644b98"
+  TestEgress                        = "Yes"
+  TestCustomUrls                    = "https://accounts.google.com,https://oauth2.googleapis.com,https://openidconnect.googleapis.com"
+  IpamPool                          = "Production"
+  DisasterRecoveryTransitGatewayId  = "tgw-02ad17b20fa31c6b1"
+  UseDisasterRecovery               = "No"
+}
+
+  tags = {
+    Environment = "prod"
+    System      = "Di Documentation"
+    Product     = "GOV.UK One Login"
+  }
+
+}
+
 module "tgw-cross-account-role" {
   source = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/tgw-cross-account-role?ref=tgw-cross-account-role-cfv2.0.1-tfv1.1.0"
 
