@@ -136,7 +136,7 @@ parameters = {
 }
 
 module "tgw-spoke-vpc" {
-  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/spoke-vpc?ref=spoke-vpc-cfv2.0.7-tfv1.1.1"
+  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.0.0-tfv0.1.0"
   stack_name = "tgw-spoke-vpc-idsre"
   on_failure = ""
   capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
@@ -175,6 +175,7 @@ parameters = {
   StatesApiEnabled                  = "Yes"
   TextractApiEnabled                = "No"
   VpcLinkEnabled                    = "Yes"
+  VpcType                           = "Spoke"
   XRayApiEnabled                    = "Yes"
   ZoneAEIPAllocationId              = "none"
   ZoneBEIPAllocationId              = "none"
