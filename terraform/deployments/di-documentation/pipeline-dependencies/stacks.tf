@@ -136,7 +136,8 @@ parameters = {
 }
 
 module "vpc" {
-  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.0.0-tfv0.1.0"
+  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc"
+  template_url = "https://rain-artifacts-842766856468-eu-west-2.s3.eu-west-2.amazonaws.com/vpc/template-PSREDEV-3662.yaml"
   stack_name = "spoke-vpc"
   on_failure = ""
   capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
@@ -164,7 +165,6 @@ parameters = {
   LambdaApiEnabled                  = "Yes"
   RestAPIGWVpcLinkEnabled           = "No"
   S3ApiEnabled                      = "Yes"
-  SESApiEnabled                     = "No"
   SESSmtpEnabled                    = "Yes"
   SNSApiEnabled                     = "Yes"
   SQSApiEnabled                     = "Yes"
@@ -177,8 +177,8 @@ parameters = {
   VpcLinkEnabled                    = "Yes"
   VpcType                           = "Spoke"
   XRayApiEnabled                    = "Yes"
-  TestEgress                        = "Yes"
-  TestCustomUrls                    = "https://accounts.google.com,https://oauth2.googleapis.com,https://openidconnect.googleapis.com"
+  DeployEgressTestLambda            = "Yes"
+  EgressTestLambdaCustomURLs        = "https://accounts.google.com,https://oauth2.googleapis.com,https://openidconnect.googleapis.com"
   UseDisasterRecovery               = "No"
 }
 
@@ -186,13 +186,6 @@ parameters = {
     Environment = "Production"
     System      = "Di Documentation"
     Product     = "GOV.UK One Login"
-  }
-
-  tags_custom = {
-    IpamPoolName = "Production"
-    Name         = "spoke-vpc-Vpc"
-    Service      = "ci/cd"
-    Source       = "govuk-one-login/devplatform-deploy/vpc/template.yaml"
   }
 
 }
