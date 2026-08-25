@@ -136,8 +136,7 @@ parameters = {
 }
 
 module "vpc" {
-  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc"
-  template_url = "https://rain-artifacts-842766856468-eu-west-2.s3.eu-west-2.amazonaws.com/vpc/template-PSREDEV-3662.yaml"
+  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.1.1-tfv0.2.0"
   stack_name = "spoke-vpc"
   on_failure = ""
   capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
