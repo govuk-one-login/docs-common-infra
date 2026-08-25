@@ -136,7 +136,7 @@ parameters = {
 }
 
 module "vpc" {
-  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.0.0-tfv0.1.0"
+  source       = "git@github.com:govuk-one-login/ipv-terraform-modules.git//secure-pipeline/vpc?ref=vpc-cfv3.1.1-tfv0.2.0"
   stack_name = "spoke-vpc"
   on_failure = ""
   capabilities = ["CAPABILITY_AUTO_EXPAND", "CAPABILITY_NAMED_IAM"]
@@ -154,6 +154,7 @@ parameters = {
   DynamoDBApiEnabled                = "Yes"
   DynatraceApiEnabled               = "Yes"
   ECRApiEnabled                     = "Yes"
+  Environment                       = "Production"
   EventsApiEnabled                  = "No"
   ExecuteApiGatewayEnabled          = "Yes"
   FirehoseApiEnabled                = "No"
@@ -161,10 +162,8 @@ parameters = {
   KMSApiEnabled                     = "Yes"
   KinesisApiEnabled                 = "No"
   LambdaApiEnabled                  = "Yes"
-  LogsApiEnabled                    = "Yes"
   RestAPIGWVpcLinkEnabled           = "No"
   S3ApiEnabled                      = "Yes"
-  SESApiEnabled                     = "No"
   SESSmtpEnabled                    = "Yes"
   SNSApiEnabled                     = "Yes"
   SQSApiEnabled                     = "Yes"
@@ -177,19 +176,13 @@ parameters = {
   VpcLinkEnabled                    = "Yes"
   VpcType                           = "Spoke"
   XRayApiEnabled                    = "Yes"
-  ZoneAEIPAllocationId              = "none"
-  ZoneBEIPAllocationId              = "none"
-  ZoneCEIPAllocationId              = "none"
-  TransitGatewayId                  = "tgw-00941dcb040644b98"
-  TestEgress                        = "Yes"
-  TestCustomUrls                    = "https://accounts.google.com,https://oauth2.googleapis.com,https://openidconnect.googleapis.com"
-  IpamPool                          = "Production"
-  DisasterRecoveryTransitGatewayId  = "tgw-02ad17b20fa31c6b1"
+  DeployEgressTestLambda            = "Yes"
+  EgressTestLambdaCustomURLs        = "https://accounts.google.com,https://oauth2.googleapis.com,https://openidconnect.googleapis.com"
   UseDisasterRecovery               = "No"
 }
 
   tags = {
-    Environment = "prod"
+    Environment = "Production"
     System      = "Di Documentation"
     Product     = "GOV.UK One Login"
   }
