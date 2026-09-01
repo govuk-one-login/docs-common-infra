@@ -190,8 +190,7 @@ module "team-manual-pipeline" {
   parameters = {
     SAMStackName               = "team-manual"
     Environment                = "build"
-    VpcStackName               = "spoke-vpc-idsre"
-    SpokeVpcStackName          = "spoke-vpc"
+    VpcStackName               = "spoke-vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 30
