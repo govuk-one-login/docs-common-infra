@@ -238,6 +238,7 @@ module "event-catalogue-pipeline" {
     SAMStackName               = "event-catalogue"
     Environment                = "dev"
     VpcStackName               = "spoke-vpc-idsre"
+    SpokeVpcStackName          = "spoke-vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 7
