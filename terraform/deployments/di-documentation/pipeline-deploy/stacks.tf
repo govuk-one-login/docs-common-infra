@@ -237,7 +237,7 @@ module "event-catalogue-pipeline" {
   parameters = {
     SAMStackName               = "event-catalogue"
     Environment                = "dev"
-    VpcStackName               = "spoke-vpc-idsre"
+    VpcStackName               = "spoke-vpc"
     SpokeVpcStackName          = "spoke-vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
