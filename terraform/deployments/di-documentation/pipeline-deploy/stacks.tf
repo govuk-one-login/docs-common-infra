@@ -213,7 +213,7 @@ module "tech-docs-pipeline" {
   parameters = {
     SAMStackName               = "tech-docs"
     Environment                = "build"
-    VpcStackName               = "vpc"
+    VpcStackName               = "spoke-vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 30
