@@ -307,9 +307,9 @@ module "wallet-docs-pipeline" {
   parameters = {
     SAMStackName               = "wallet-docs"
     Environment                = "dev"
-    VpcStackName               = "vpc"
-    IncludePromotion = "No"
-    #AWSOrganizationId          = data.aws_organizations_organization.gds.id
+    VpcStackName               = "spoke-vpc"
+    IncludePromotion           = "No"
+    #AWSOrganizationId         = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 7
     ContainerSignerKmsKeyArn   = data.aws_cloudformation_stack.container-signer.outputs["ContainerSignerKmsKeyArn"]
     SigningProfileArn          = data.aws_cloudformation_stack.aws-signer.outputs["SigningProfileArn"]
