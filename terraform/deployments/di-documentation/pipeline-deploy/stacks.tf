@@ -259,7 +259,7 @@ module "signals-catalogue-pipeline" {
   parameters = {
     SAMStackName               = "signals-catalogue"
     Environment                = "dev"
-    VpcStackName               = "spoke-vpc-idsre"
+    VpcStackName               = "spoke-vpc"
     SpokeVpcStackName          = "spoke-vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
