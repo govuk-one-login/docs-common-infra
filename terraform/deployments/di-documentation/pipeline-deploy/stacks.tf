@@ -260,7 +260,6 @@ module "signals-catalogue-pipeline" {
     SAMStackName               = "signals-catalogue"
     Environment                = "dev"
     VpcStackName               = "spoke-vpc"
-    SpokeVpcStackName          = "spoke-vpc"
     IncludePromotion           = "No"
     #AWSOrganizationId          = data.aws_organizations_organization.gds.id
     LogRetentionDays           = 7
