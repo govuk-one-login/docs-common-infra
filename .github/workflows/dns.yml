@@ -33,7 +33,7 @@ jobs:
         uses: aws-actions/setup-sam@v2
 
       - name: Set up AWS creds For Pipeline
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v6.3.0
         with:
           role-to-assume: ${{ secrets.DNS_GHA_ROLE }}
           aws-region: eu-west-2
