@@ -67,6 +67,13 @@ Resources:
     Properties:
       Name: docs.wallet.service.gov.uk
 
+  DocsWalletAccountPublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: docs.wallet.account.gov.uk
+
   EventCataloguePublicHostedZone:
     Type: AWS::Route53::HostedZone
     DeletionPolicy: Retain
@@ -115,6 +122,15 @@ Outputs:
     Value: !GetAtt WalletTechDocsPublicHostedZone.Id
     Export:
       Name: WalletTechDocsPublicHostedZoneId
+
+  DocsWalletAccountPublicHostedZoneNameServers:
+    Value: !Join
+      - ","
+      - !GetAtt DocsWalletAccountPublicHostedZone.NameServers
+  DocsWalletAccountPublicHostedZoneId:
+    Value: !GetAtt DocsWalletAccountPublicHostedZone.Id
+    Export:
+      Name: DocsWalletAccountPublicHostedZoneId
 
   DocsWalletServicePublicHostedZoneNameServers:
     Value: !Join
