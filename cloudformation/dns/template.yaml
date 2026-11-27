@@ -60,6 +60,20 @@ Resources:
     Properties:
       Name: wallet.docs.sign-in.service.gov.uk
 
+  WalletServicePublicHostedZone:
+    Type: AWS::Route53::HostedZone
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      Name: wallet.service.gov.uk
+  DocsWalletServiceDelegation:
+    Type: AWS::Route53::RecordSet
+    Properties:
+      Name: docs.wallet.service.gov.uk
+      Type: NS
+      HostedZoneId: !Ref WalletServicePublicHostedZone
+      ResourceRecords: !GetAtt DocsWalletServicePublicHostedZone.NameServers
+      TTL: 3600
   DocsWalletServicePublicHostedZone:
     Type: AWS::Route53::HostedZone
     DeletionPolicy: Retain
@@ -115,6 +129,15 @@ Outputs:
     Value: !GetAtt WalletTechDocsPublicHostedZone.Id
     Export:
       Name: WalletTechDocsPublicHostedZoneId
+
+  WalletServicePublicHostedZoneNameServers:
+    Value: !Join
+      - ","
+      - !GetAtt WalletServicePublicHostedZone.NameServers
+  WalletServicePublicHostedZoneId:
+    Value: !GetAtt WalletServicePublicHostedZone.Id
+    Export:
+      Name: WalletServicePublicHostedZoneId
 
   DocsWalletServicePublicHostedZoneNameServers:
     Value: !Join
